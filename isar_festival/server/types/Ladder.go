@@ -1,8 +1,8 @@
 package types
 
 import (
-	"fastbot/types"
 	"fmt"
+	"isar_festival/types"
 	"sort"
 	"strconv"
 	"strings"
@@ -219,6 +219,26 @@ func (L *Ladder) GameContested(nickname string, gameId int) string {
 	return "contested"
 }
 
+func (L *Ladder) GameUnContested(nickname string, gameId int) string {
+	v, found := L.Games[gameId]
+	if !found {
+		return "no such game"
+	}
+	f, _ := v.wasPlayer(nickname)
+	if !f {
+		return "you're not player"
+	}
+	if !v.Finished {
+		return "finish first"
+	}
+	if !v.Contested {
+		return "already not contested"
+	}
+	L.Games[gameId].Contested = false
+	L.Games[gameId].WhoContested = ""
+	return "not contested now"
+}
+
 func (L *Ladder) ForceGameContested(nickname string, gameId int) string {
 	v, found := L.Games[gameId]
 	if !found {
@@ -289,7 +309,7 @@ func (L *Ladder) GetLeaderBoard() string {
 		return p1.kk < p2.kk || (p1.kk == p2.kk && p1.vv <= p2.vv)
 	}
 	By(kek).Sort(checked)
-	res := "Leadersboard:"
+	res := "Leaderboard:"
 	t := 0
 	i := len(checked)
 	for  i > 0 && t < 6 {

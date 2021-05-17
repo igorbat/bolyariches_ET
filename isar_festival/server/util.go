@@ -21,9 +21,9 @@ import (
 	"strings"
 	"time"
 
-	serverTypes "fastbot/server/types"
 	"go-wesnoth/wesnoth"
 	"go-wml"
+	serverTypes "isar_festival/server/types"
 )
 
 func SplitMessage(text string) []string {

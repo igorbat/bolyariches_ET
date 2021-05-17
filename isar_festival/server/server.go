@@ -32,12 +32,12 @@ import (
 	"strings"
 	"time"
 
-	serverTypes "fastbot/server/types"
-	"fastbot/types"
 	e "go-wesnoth/era"
 	"go-wesnoth/game"
 	"go-wesnoth/scenario"
 	"go-wml"
+	serverTypes "isar_festival/server/types"
+	"isar_festival/types"
 )
 
 type Server struct {
@@ -204,7 +204,7 @@ func (s *Server) HostGame() {
 	var path string
 	var defines []string
 	path = s.scenarios[0].Scenario.Path()
-	g := game.NewGame("Isar's Cross Festival: Game " + strconv.Itoa(s.Ladder.GamesCount),
+	g := game.NewGame("Auto Isar's Cross League: Game " + strconv.Itoa(s.Ladder.GamesCount),
 		scenario.FromPath(path, defines),
 		s.era,
 		s.TimerEnabled, s.InitTime, s.TurnBonus, s.ReservoirTime, s.ActionBonus,
@@ -213,7 +213,7 @@ func (s *Server) HostGame() {
 
 	s.InGame = true
 	s.sendData(
-		(&wml.Tag{"create_game", wml.Data{"name": "Isar's Cross Festival: Game " + strconv.Itoa(s.Ladder.GamesCount),
+		(&wml.Tag{"create_game", wml.Data{"name": "Isar Autohost League: Game " + strconv.Itoa(s.Ladder.GamesCount),
 		"password": ""}}).Bytes())
 	s.sendData(s.game)
 }
@@ -382,6 +382,10 @@ func (s *Server) Listen() {
 						gameId := types.ParseInt(command[1], -1)
 						msg := s.Ladder.GameContested(command[2], gameId)
 						s.Whisper(sender, msg)
+					case command[0] == "uncontest" && len(command) == 3:
+						gameId := types.ParseInt(command[1], -1)
+						msg := s.Ladder.GameUnContested(command[2], gameId)
+						s.Whisper(sender, msg)
 					case command[0] == "host" && len(command) == 5:
 						id,_,_,_,_ := s.Ladder.ArrangeGame(command[1], command[2], command[3], command[4])
 						s.Ladder.GameStarted(command[1], command[2], command[3], command[4])
@@ -438,6 +442,7 @@ func (s *Server) Listen() {
 							"to_check - contested games\n"+
 							"force_report id nick - report game id by nick\n" +
 							"force_contest id nick - contest game id by nick\n" +
+							"uncontest id nick - uncontest game id by nick\n" +
 							"admin_help - request command reference\n")
 					}
 				}

@@ -19,7 +19,7 @@ import (
 	"os"
 	"time"
 
-	"fastbot/types"
+	"isar_festival/types"
 )
 
 // Default Bot's parameters

@@ -144,11 +144,11 @@ func (ip *IsarPlayer) CanPlay() bool {
 	return (ip.YellowCardCount < 3) && (len(ip.OpenedGames) < 3)
 }
 func (ip *IsarPlayer) Info() string {
-	return ip.Nickname +
-		" Raiting: " + strconv.Itoa(ip.Raiting) +
-		" YellowCardsCount:" + strconv.Itoa(ip.YellowCardCount) +
-		" FinishedGamesCount:" + strconv.Itoa(len(ip.FinishedGames)) +
-		" OpenedGamesCount:" + strconv.Itoa(len(ip.OpenedGames)) + " " + dump_slice(-1, ip.OpenedGames) + "\n"
+	return "Playerinfo " + ip.Nickname +
+		" - Rating: " + strconv.Itoa(ip.Raiting) +
+		" - YellowCardsCount:" + strconv.Itoa(ip.YellowCardCount) +
+		" - FinishedGamesCount:" + strconv.Itoa(len(ip.FinishedGames)) +
+		" - OpenedGamesCount:" + strconv.Itoa(len(ip.OpenedGames)) + " " + dump_slice(-1, ip.OpenedGames) + "\n"
 }
 
 

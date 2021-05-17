@@ -1,0 +1,2 @@
+go build -i -o C:\Users\IgorBat\AppData\Local\Temp\___229go_build_fastbot.exe fastbot
+C:\Users\IgorBat\AppData\Local\Temp\___229go_build_fastbot.exe

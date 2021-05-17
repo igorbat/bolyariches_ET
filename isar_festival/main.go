@@ -1,29 +1,14 @@
-// This file is part of Fastbot.
-//
-// Fastbot is free software: you can redistribute it and/or modify
-// it under the terms of the GNU General Public License as published by
-// the Free Software Foundation, either version 3 of the License, or
-// (at your option) any later version.
-//
-// Fastbot is distributed in the hope that it will be useful,
-// but WITHOUT ANY WARRANTY; without even the implied warranty of
-// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-// GNU General Public License for more details.
-//
-// You should have received a copy of the GNU General Public License
-// along with Fastbot.  If not, see <https://www.gnu.org/licenses/>.
-
-// fastbot project main.go
+// isar_festival project main.go
 package main
 
 import (
-	"fastbot/config"
-	"fastbot/server"
-	serverTypes "fastbot/server/types"
 	"fmt"
 	"go-wesnoth/era"
 	"go-wesnoth/scenario"
 	"go-wesnoth/wesnoth"
+	"isar_festival/config"
+	"isar_festival/server"
+	serverTypes "isar_festival/server/types"
 	"time"
 )
 
