@@ -2,7 +2,7 @@
 Repo for Endless tournaments in Wesnoth
 Games are hosted by in-game bot.
 
-This was a petproject for Isar festival in wesnoth () -- MVP
+This was a petproject for Isar festival in wesnoth (https://forums.wesnoth.org/viewtopic.php?t=54290) -- MVP
 Impact: 159 players, 235 games(2 vs 2) played in 7 days.
 
 Nowadays this project is run by @Discontinuum, he is holding roughly x3(afterlife bot) and x1.5(isar bot) more
